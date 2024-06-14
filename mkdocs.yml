@@ -1,0 +1,5 @@
+site_name: PokeDex
+site_url: https://github.com/esgameco/PokeDex
+
+theme:
+  name: mkdocs
