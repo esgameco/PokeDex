@@ -1,5 +1,5 @@
 site_name: PokeDex
-site_url: https://github.com/esgameco/PokeDex
+site_url: https://localhost/PokeDex
 
 theme:
   name: mkdocs
