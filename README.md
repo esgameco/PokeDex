@@ -20,5 +20,7 @@ mkdocs serve
 ## Backend
 
 ```bash
-
+pip install flask[async]
+pip install httpx
+flask --app main run
 ```
