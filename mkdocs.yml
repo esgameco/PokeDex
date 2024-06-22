@@ -2,4 +2,4 @@ site_name: PokeDex
 site_url: https://localhost/docs
 
 theme:
-  name: mkdocs
+  name: material
