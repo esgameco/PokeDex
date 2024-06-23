@@ -7,10 +7,9 @@ A full stack project using flask and react that aims to replicate a PokeDex.
 ## API
 
 ```bash
-pip install mkdocs
-mkdocs serve
+.\DocsHelper.bat install
 ```
-
+-
 ## Frontend
 
 ```bash
