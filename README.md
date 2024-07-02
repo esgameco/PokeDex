@@ -19,7 +19,6 @@ A full stack project using flask and react that aims to replicate a PokeDex.
 ## Backend
 
 ```bash
-pip install flask[async]
-pip install httpx
-flask --app main run
+.\BackendHelper.bat install
+.\BackendHelper.bat run
 ```
