@@ -1,8 +1,8 @@
 # Pokemon
 
-## Query Pokemon
+## Get Pokemon
 
-`GET /api/pokemon/{name}`
+`GET /api/pokemon/{param}`
 
 ```
 response: {
