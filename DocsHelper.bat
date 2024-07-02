@@ -3,7 +3,7 @@
 if "%1" == "build" (
     call mkdocs build -d .\backend\build\docs
 ) else if "%1" == "run" (
-    start cmd /k "mkdocs serve"
+    start cmd /k "python -m mkdocs serve"
 ) else if "%1" == "install" (
     call pip install mkdocs
     call pip install mkdocs-material
