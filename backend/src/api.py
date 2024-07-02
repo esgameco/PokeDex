@@ -7,10 +7,17 @@ class API:
     async def get_pokemon(self, param: str) -> dict:
         async with httpx.AsyncClient() as client:
             res = await client.get(f'{self.BASE_URL}/pokemon/{param}')
+
+            # Check result
             if res.text == "Not Found":
                 return {
                     "statusCode": 1,
                     "statusMessage": "Not Found",
+                }
+            elif res.status_code != 200:
+                return {
+                    "statusCode": 2,
+                    "statusMessage": "Unknown error",
                 }
 
             data = res.json()

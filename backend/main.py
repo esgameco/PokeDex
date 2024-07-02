@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 async def index():
-    return ''
+    return 'index'
 
 @app.route("/api/pokemon/<string:param>")
 async def get_pokemon(param: str):

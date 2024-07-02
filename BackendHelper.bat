@@ -1,7 +1,7 @@
 @echo off
 
 if "%1" == "run" (
-    start cmd /k "flask --app .\backend\main run"
+    start cmd /k "python -m flask --app .\backend\main run"
 ) else if "%1" == "install" (
     call pip install flask[async]
     call pip install httpx
