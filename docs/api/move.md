@@ -1,8 +1,8 @@
-# Items
+# Move
 
-## Get Item
+## Get Move
 
-`GET /api/item/{param}`
+`GET /api/move/{param}`
 
 ```
 response: {
@@ -10,6 +10,12 @@ response: {
     statusMessage: string,
     name: string,
     effect: string,
+    type: string,
+    damageClass: string,
+    power: int,
+    accuracy: int,
+    pp: int,
+    priority: int,
 }
 
 status: {

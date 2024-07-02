@@ -8,8 +8,8 @@
 response: {
     statusCode: int,
     statusMessage: string,
+    name: string,
     effect: string,
-    name: string
 }
 
 status: {

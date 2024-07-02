@@ -39,10 +39,44 @@ response: {
     statusMessage: string
 }
 
-RegisterStatus: {
+LoginStatus: {
     0, Success;
-    1, Email Found;
+    1, Username Not Found;
     2, Invalid Password;
     3, Unknown Error;
+}
+```
+
+## Logout
+
+`GET /api/user/logout`
+
+```
+response: {
+    statusCode: int,
+    statusMessage: string
+}
+
+status: {
+    0, Success;
+    1, Unknown Error;
+}
+```
+
+## Profile
+
+`GET /api/user/profile/{user_id}`
+
+```
+response: {
+    statusCode: int,
+    statusMessage: string,
+    username: string,
+    description: string,
+}
+
+status: {
+    0, Success;
+    1, Unknown Error;
 }
 ```

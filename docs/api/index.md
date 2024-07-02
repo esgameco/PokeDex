@@ -8,9 +8,22 @@
 response: {
     statusCode: int,
     statusMessage: string,
-    abilities: list,
-    forms: list,
-    types: list,
+    name: string,
+    abilities: list {
+        id: int,
+        name: string,
+        effect: string
+    },
+    types: list {
+        id: int,
+        name: string
+    },
+    hp: int,
+    attack: int,
+    defense: int,
+    specialAttack: int,
+    specialDefense: int,
+    speed: int,
     height: int,
     weight: int,
     image: string,
