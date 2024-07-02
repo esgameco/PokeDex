@@ -2,3 +2,6 @@
 .pytest_cache
 .vscode
 .benchmarks
+
+# Node
+node_modules
