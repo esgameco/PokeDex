@@ -5,6 +5,7 @@
 ```
 0: pokemon,
 1: ability,
-2: form,
-3: type
+2: item,
+3: type,
+4: move
 ```

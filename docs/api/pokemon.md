@@ -32,5 +32,6 @@ response: {
 status: {
     0, Success;
     1, Not found;
+    2, Unknown Error;
 }
 ```
