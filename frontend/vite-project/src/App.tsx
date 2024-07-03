@@ -6,6 +6,7 @@ import About from "./components/About";
 import PokemonPage from "./components/Pokemon/PokemonPage";
 
 
+
 function App() {
     return (
         <>
