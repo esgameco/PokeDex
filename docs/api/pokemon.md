@@ -18,14 +18,16 @@ response: {
         id: int,
         name: string
     },
-    hp: int,
-    attack: int,
-    defense: int,
-    specialAttack: int,
-    specialDefense: int,
-    speed: int,
-    height: int,
-    weight: int,
+    stats: dict {
+        hp: int,
+        attack: int,
+        defense: int,
+        specialAttack: int,
+        specialDefense: int,
+        speed: int,
+        height: int,
+        weight: int,
+    },
     image: string,
 }
 

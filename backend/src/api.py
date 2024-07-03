@@ -8,7 +8,7 @@ class API:
         self.api_helper = APIHelper()
         self.cache = Cache(cache_path)
 
-    async def get_pokemon(self, param: str) -> dict:
+    async def get_pokemon(self, param: str, use_status: bool=False) -> dict:
         if self.cache.is_in('pokemon', param):
             return self.cache.get('pokemon', param)
 
@@ -19,21 +19,28 @@ class API:
 
             data = res.json()
             obj = {
-                "statusCode": 0,
-                "statusMessage": "Success",
                 "name": data["name"].title(),
-                "abilities": [self.get_ability(x['ability']['name']) for x in data["abilities"]],
-                "types": [self.get_type(x['type']['name']) for x in data["types"]],
-                "forms": data["forms"],
-                "height": data["height"],
-                "weight": data["weight"],
+                "abilities": [await self.get_ability(x['ability']['name']) for x in data["abilities"]],
+                "types": [await self.get_type(x['type']['name']) for x in data["types"]],
+                "stats": {
+                    "hp": self.api_helper.get_stat(data['stats'], 'hp'),
+                    "attack": self.api_helper.get_stat(data['stats'], 'attack'),
+                    "defense": self.api_helper.get_stat(data['stats'], 'defense'),
+                    "specialAttack": self.api_helper.get_stat(data['stats'], 'special-attack'),
+                    "specialDefense": self.api_helper.get_stat(data['stats'], 'special-defense'),
+                    "speed": self.api_helper.get_stat(data['stats'], 'speed'),
+                    "height": data["height"],
+                    "weight": data["weight"],
+                },
                 "image": data["sprites"]["other"]["official-artwork"]["front_default"],
             }
 
             self.cache.set('pokemon', param, obj)
+            if use_status:
+                return self.api_helper.add_status(obj)
             return obj
     
-    async def get_ability(self, param: str) -> dict:
+    async def get_ability(self, param: str, use_status: bool=False) -> dict:
         if self.cache.is_in('ability', param):  
             return self.cache.get('ability', param)
 
@@ -44,16 +51,16 @@ class API:
             
             data = res.json()
             obj = {
-                "statusCode": 0,
-                "statusMessage": "Success",
                 "name": self.api_helper.get_name(data['names']),
                 "effect": self.api_helper.get_effect(data['effect_entries']),
             }
 
             self.cache.set('ability', param, obj)
+            if use_status:
+                return self.api_helper.add_status(obj)
             return obj
     
-    async def get_type(self, param: str) -> dict:
+    async def get_type(self, param: str, use_status: bool=False) -> dict:
         if self.cache.is_in('type', param):  
             return self.cache.get('type', param)
 
@@ -64,13 +71,13 @@ class API:
             
             data = res.json()
             obj = {
-                "statusCode": 0,
-                "statusMessage": "Success",
                 "name": self.api_helper.get_name(data['names']),
                 "damageClass": data['move_damage_class']['name'].title(),
             }
 
             self.cache.set('type', param, obj)
+            if use_status:
+                return self.api_helper.add_status(obj)
             return obj
 
 class APIHelper:
@@ -90,6 +97,18 @@ class APIHelper:
             "statusCode": 2,
             "statusMessage": "Unknown error",
         }
+
+    def add_status(self, obj: dict) -> dict:
+        return obj.update({
+            "statusCode": 0,
+            "statusMessage": "Success",
+        })
+    
+    def get_stat(self, entries: list, stat: str) -> int:
+        for entry in entries:
+            if entry['stat']['name'] == stat:
+                return entry['base_stat']
+        return -1
 
     def get_effect(self, entries: list) -> str:
         return self._get_value(entries, 'effect')
