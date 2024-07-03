@@ -7,6 +7,7 @@ if "%1" == "run" (
 ) else if "%1" == "install" (
     call pip install flask[async]
     call pip install httpx
+    call pip install flask-cors
 ) else (
     echo Invalid argument. Usage: %0 [run^|install]
 )
