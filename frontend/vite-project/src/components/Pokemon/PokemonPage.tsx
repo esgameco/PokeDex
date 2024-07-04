@@ -70,11 +70,11 @@ function PokemonPage() {
             <div className="basic-info-container">
                 <h1>ditto: {pokemon?.name}</h1>
                 <ul>Type:
-                    {/* {type.map((t, index) => (
-                        <li className="no-bullets" key={type.id | index}>
-                            <a href={`/type/${type.name}`} > {type.name}</a>
+                    {type.map((t, index) => (
+                        <li className="no-bullets" key={t.id | index}>
+                            <a href={`/type/${t.name}`} > {t.name}</a>
                         </li>
-                    ))} */}
+                    ))}
                 </ul>
                 <div>Abilities</div>
                 {abilities.map((ability, index) => (
