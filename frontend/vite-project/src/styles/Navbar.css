@@ -3,7 +3,7 @@
 }
 
 body {
-    margin: 0
+    margin: 1
 }
 
 .nav {
@@ -11,11 +11,17 @@ body {
     color: red;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 2rem;
+    padding: 0 5rem;
+}
+
+.nav .site-name {
     padding: 0 1rem;
 }
 
+.nav .site-name {
+    padding: 0 1rem;
+}
 
 
 .nav ul {
@@ -24,6 +30,7 @@ body {
     list-style: none;
     display: flex;
     gap: 1rem;
+    padding: 0 1rem;
 }
 
 .site-name {

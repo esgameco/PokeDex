@@ -1,0 +1,7 @@
+.no-bullets {
+    list-style-type: none;
+}
+
+.base-stats-container div {
+    padding: 10px 5px;
+}
