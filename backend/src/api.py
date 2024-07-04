@@ -8,7 +8,7 @@ class API:
         self.api_helper = APIHelper()
         self.cache = Cache(cache_path)
 
-    async def get_pokemon(self, param: str, use_status: bool=False) -> dict:
+    async def get_pokemon(self, param: str) -> dict:
         if self.cache.is_in('pokemon', param):
             return self.cache.get('pokemon', param)
 
@@ -36,11 +36,9 @@ class API:
             }
 
             self.cache.set('pokemon', param, obj)
-            if use_status:
-                return self.api_helper.add_status(obj)
             return obj
     
-    async def get_ability(self, param: str, use_status: bool=False) -> dict:
+    async def get_ability(self, param: str) -> dict:
         if self.cache.is_in('ability', param):  
             return self.cache.get('ability', param)
 
@@ -56,11 +54,9 @@ class API:
             }
 
             self.cache.set('ability', param, obj)
-            if use_status:
-                return self.api_helper.add_status(obj)
             return obj
     
-    async def get_type(self, param: str, use_status: bool=False) -> dict:
+    async def get_type(self, param: str) -> dict:
         if self.cache.is_in('type', param):  
             return self.cache.get('type', param)
 
@@ -76,9 +72,15 @@ class API:
             }
 
             self.cache.set('type', param, obj)
-            if use_status:
-                return self.api_helper.add_status(obj)
             return obj
+    
+    def add_status(self, obj: dict) -> dict:
+        if 'statusCode' not in obj.keys():
+            obj.update({
+                "statusCode": 0,
+                "statusMessage": "Success",
+            })
+        return obj
 
 class APIHelper:
     def __init__(self):
@@ -97,12 +99,6 @@ class APIHelper:
             "statusCode": 2,
             "statusMessage": "Unknown error",
         }
-
-    def add_status(self, obj: dict) -> dict:
-        return obj.update({
-            "statusCode": 0,
-            "statusMessage": "Success",
-        })
     
     def get_stat(self, entries: list, stat: str) -> int:
         for entry in entries:

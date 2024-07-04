@@ -9,5 +9,5 @@ if "%1" == "run" (
     call pip install httpx
     call pip install flask-cors
 ) else (
-    echo Invalid argument. Usage: %0 [run^|install]
+    echo Invalid argument. Usage: %0 [run^|debug^|install]
 )
