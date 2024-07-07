@@ -1,11 +1,11 @@
-
+import "../styles/Pokemon.css"
 
 function Home() {
     let things = ["pokemon things", "mabye pokemon things"]
 
     if (things) {
         return (
-            <>
+            <div className="container">
                 <h1>Pokedex</h1>
                 <ul className="list-group">
                     {things.map((things) => (
@@ -13,7 +13,7 @@ function Home() {
                     ))}
                 </ul>
                 <a href="/Pokemon/incineroar">Incineorar</a>
-            </>
+            </div>
         );
     } else {
         return <><h1>things</h1></>
