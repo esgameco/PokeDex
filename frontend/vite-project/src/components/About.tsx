@@ -2,7 +2,6 @@
 
 function About() {
     let people = ["Pasang Shera", "Chance Vodnoy"]
-
     if (people) {
         return (
             <>

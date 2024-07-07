@@ -3,26 +3,25 @@
 }
 
 body {
-    margin: 1
+    margin: 1;
 }
 
 .nav {
-    background-color: black;
-    color: red;
+    background-color: #D32F2F;
+    color: #fff;
     display: flex;
     justify-content: space-between;
     gap: 2rem;
     padding: 0 5rem;
+    border: 1px solid #D32F2F;
+    border-radius: 5px;
+    max-width: 1500px;
+    width: 100%;
 }
 
 .nav .site-name {
     padding: 0 1rem;
 }
-
-.nav .site-name {
-    padding: 0 1rem;
-}
-
 
 .nav ul {
     padding: 0;

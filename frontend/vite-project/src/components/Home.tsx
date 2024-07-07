@@ -12,7 +12,7 @@ function Home() {
                         <li>{things}</li>
                     ))}
                 </ul>
-                <a href="/Pokemon/ditto">Ditto</a>
+                <a href="/Pokemon/incineroar">Incineorar</a>
             </>
         );
     } else {
